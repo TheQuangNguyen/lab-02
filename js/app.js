@@ -12,20 +12,22 @@ function Images(url, title, description, keyword, horns) {
 }
 
 Images.list = [];
+const optionArray = [];
 
 
 $.get('./data/page-1.json', (data) => {
   data.forEach(element => {
     new Images(element.image_url, element.title, element. description, element.keyword, element.horns);
   })
+  optionListener();
 });
 
 
 Images.prototype.displayImage = function() { 
   const $newImage = $('#photo-template').clone();
 
-  $newImage.find('h2').text(this.title);
-  $newImage.find('p').text(this.description);
+  $newImage.find('h2').text(this.title).attr('keyword', `${this.keyword}`);
+  $newImage.find('p').text(this.description).attr('keyword', `${this.keyword}`);
   $newImage.find('img').attr({ src: this.image_url, 
     alt: this.keyword});
 
@@ -33,16 +35,23 @@ Images.prototype.displayImage = function() {
 };
 
 Images.prototype.displayOptions = function() { 
-  $('select').append(`<option>${this.keyword}</option>`);
+  if (!optionArray.includes(this.keyword)) {
+    $('select').append(`<option>${this.keyword}</option>`);
+    optionArray.push(this.keyword);
+  }
 }
 
 function optionListener() { 
-  $('select').on('click','option', event => { 
+  $('select').change( () => { 
     const $selectedImage = $('select option:selected').text();
     console.log($selectedImage);
-    if ($selectedImage) { 
-      $('img').not(`[alt="${$selectedImage}"]`).hide();
-    }
+    
+    $('img').not(`[alt="${$selectedImage}"]`).hide();
+    $('h2').not(`[alt="${$selectedImage}"]`).hide();
+    $('p').not(`[alt="${$selectedImage}"]`).hide();
+    $(`img[alt="${$selectedImage}"]`).show();
+    $(`h2[keyword="${$selectedImage}"]`).show();
+    $(`p[keyword="${$selectedImage}"]`).show();
+
   })
 }
-optionListener();
