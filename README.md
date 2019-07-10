@@ -9,9 +9,9 @@
 
 * Start time: 9-00am
 
-* Finish time: 10-30am 
+* Finish time: 10-40am 
 
-* Actual time needed to complete:  ? 
+* Actual time needed to complete:  1h 40m <= pretty accurate
  
  
 ## Task 2.
