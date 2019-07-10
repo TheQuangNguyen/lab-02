@@ -13,7 +13,7 @@ function Images(url, title, description, keyword, horns) {
 
 Images.list = [];
 const optionArray = [];
-
+let counter =0;
 
 $.get('./data/page-1.json', (data) => {
   data.forEach(element => {
@@ -32,7 +32,11 @@ Images.prototype.displayImage = function() {
     alt: this.keyword});
 
   $('main').append($newImage);
-};
+  if (counter === 0) {
+    $('#photo-template:first-child').remove();
+  }
+  counter++;
+  };
 
 Images.prototype.displayOptions = function() { 
   if (!optionArray.includes(this.keyword)) {
