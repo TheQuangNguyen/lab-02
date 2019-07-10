@@ -8,6 +8,7 @@ function Images(url, title, description, keyword, horns) {
   this.horns = horns;
   Images.list.push(this);
   this.displayImage();
+  this.displayOptions();
 }
 
 Images.list = [];
@@ -30,3 +31,18 @@ Images.prototype.displayImage = function() {
 
   $('main').append($newImage);
 };
+
+Images.prototype.displayOptions = function() { 
+  $('select').append(`<option>${this.keyword}</option>`);
+}
+
+function optionListener() { 
+  $('select').on('click','option', event => { 
+    const $selectedImage = $('select option:selected').text();
+    console.log($selectedImage);
+    if ($selectedImage) { 
+      $('img').not(`[alt="${$selectedImage}"]`).hide();
+    }
+  })
+}
+optionListener();
