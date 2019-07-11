@@ -22,9 +22,9 @@
 
 * Start time: 10-30am
 
-* Finish time: 12-00pm 
+* Finish time: 11-50pm 
 
-* Actual time needed to complete:  ?
+* Actual time needed to complete:  1h 20min
  
  
 ## Task 3.
@@ -35,6 +35,7 @@
 
 * Start time: 12-00am
 
-* Finish time: 1-30pm 
+* Finish time: 1-00pm 
 
-* Actual time needed to complete: ?
+* Actual time needed to complete: 1h 
+
